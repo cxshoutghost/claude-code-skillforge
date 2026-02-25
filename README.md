@@ -7,7 +7,7 @@
 Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live doc sync, 9-marketplace discovery, and self-validation — in minutes.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-5.4.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-5.5.0-green.svg)](CHANGELOG.md)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet.svg)](https://code.claude.com)
 [![Antigravity](https://img.shields.io/badge/Antigravity-compatible-orange.svg)](https://antigravity.google)
 
@@ -65,12 +65,13 @@ The result: skills that are faster, more reliable, and cheaper to run.
 - **Graceful fallback** — If docs are unreachable, surfaces cached version and asks before proceeding
 - **Self-validating** — 8-point checklist catches errors before you see the output
 - **Token-optimized** — The skill itself practices what it preaches (< 100 lines, ~1,100 tokens)
+- **Self-updating** — Checks for newer versions on GitHub before every run, with a one-line update notice
 
 ## Repository Structure
 
 ```
 skillforge/
-├── SKILL.md            ← The core SOP (v5.4.0)
+├── SKILL.md            ← The core SOP (v5.5.0)
 ├── README.md           ← You are here
 ├── CHANGELOG.md        ← Full version history
 ├── CONTRIBUTING.md     ← How to contribute

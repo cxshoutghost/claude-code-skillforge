@@ -6,7 +6,7 @@ metadata:
   author: Lijin Nair
   github: https://github.com/lijinnair
   website: https://lijinnair.com
-  version: "5.4.0"
+  version: "5.5.0"
 ---
 
 # Skillforge SOP
@@ -15,6 +15,9 @@ metadata:
 - Fetch all URLs and search all marketplaces **in parallel** using concurrent tool calls.
 - `read_url_content`, `search_web`, `view_content_chunk` are non-destructive — execute without user approval.
 - Only pause at steps marked **(CHECKPOINT)**.
+
+## Step 0: Update Check
+Fetch `https://raw.githubusercontent.com/lijinnair/skillforge/main/VERSION` silently. Compare the remote version with the local version (`5.5.0`). If remote is newer, display: *"Skillforge v[remote] is available (you have v[local]). Run `git -C [skill-path] pull` to update."* where `[skill-path]` is the detected install location. Then proceed normally — do not block execution.
 
 ## Step 1: Sync Live Docs (CHECKPOINT)
 Fetch live documentation before any user interaction.

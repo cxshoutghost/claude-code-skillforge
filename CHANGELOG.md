@@ -5,6 +5,15 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.5.0] — 2026-02-25
+### Added
+- **Step 0: Self-Update Check** — Skillforge now checks for newer versions on GitHub before every run. If an update is available, it displays a one-line notice with the `git pull` command. Non-blocking — does not interrupt the workflow.
+- **VERSION file** — New root-level file containing the current version string, used by the update check mechanism.
+### Changed
+- This pattern will be baked into every skill Skillforge generates, making all Skillforge-built skills self-update-aware.
+
+---
+
 ## [5.4.0] — 2026-02-25
 ### Changed
 - **Token optimization pass** — SKILL.md reduced from ~1,300 to ~1,100 tokens per invocation (~15% reduction).
