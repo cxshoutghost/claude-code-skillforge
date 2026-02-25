@@ -5,6 +5,26 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.7.0] — 2026-02-26
+### Added
+- **New discovery source in Step 2.5** — Added [Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills) (37K GitHub stars), expanding from 9 to 10 marketplace sources searched in parallel.
+- **8 authoring patterns in Step 4** — Template pattern (strict vs flexible output formats), Examples pattern (input/output pairs), Conditional workflow pattern (decision-point branching), Checklist pattern (copyable progress tracking), Verifiable intermediates (plan-validate-execute), Defaults over options, MCP tool references (`ServerName:tool_name`), and Progressive Disclosure — all drawn from the official best practices.
+- **Name field validation rules in Step 2** — Now teaches all 4 official constraints: max 64 characters, lowercase letters/numbers/hyphens only, no XML tags, cannot contain reserved words ("anthropic", "claude").
+- **XML tag prohibition** — Added to Step 2 (name), Step 3 (description), and Step 6 (checklist).
+- **MCP server support** — Step 2 (Tools) now includes MCP servers as an option. Step 4 teaches fully qualified `ServerName:tool_name` format.
+- **Script quality guidance in Step 5** — "Solve, don't punt" (explicit error handling), no voodoo constants (document all configuration values), and dependency declaration (list packages with install commands).
+- **Reference file guidance in Step 5** — Table of contents for files >100 lines, forward-slash-only paths.
+- **3-section validation checklist in Step 6** — Restructured from a flat 11-item list to 3 sections: Core quality (16 items), Code & scripts (8 items), Post-delivery recommendations (3 items) — 27 items total, aligned with the official checklist structure.
+- **Post-delivery testing recommendations** — Step 6 now recommends testing with Haiku/Sonnet/Opus, creating 3+ evaluation scenarios, and testing with real usage before sharing.
+- **`evaluations/` directory** — 3 evaluation scenario files for testing Skillforge-generated skills: simple skill (no scripts), skill with scripts and dependencies, advanced skill (MCP tools + conditional workflow + checklist pattern).
+
+### Changed
+- **Step 4 (SOP Translation)** — Reorganized into base rules + "Authoring patterns" subsection for cleaner progressive disclosure.
+- **Step 5 (Scaffold)** — Split into Scripts and References subsections for clarity.
+- **Example: formatting-commits** — Added input/output example pairs demonstrating the Examples pattern from the official best practices.
+
+---
+
 ## [5.6.0] — 2026-02-26
 ### Changed
 - **Front matter compliance** — Removed non-standard fields (`license`, `metadata` block) from Skillforge's own front matter. Added `argument-hint` field. Only officially recognized fields are now used.

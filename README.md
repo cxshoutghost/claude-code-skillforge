@@ -4,10 +4,10 @@
 
 ### The skill that builds skills.
 
-Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live doc sync, 9-marketplace discovery, and self-validation — in minutes.
+Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live doc sync, 10-marketplace discovery, and self-validation — in minutes.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-5.6.0-green.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-5.7.0-green.svg)](CHANGELOG.md)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet.svg)](https://code.claude.com)
 [![Antigravity](https://img.shields.io/badge/Antigravity-compatible-orange.svg)](https://antigravity.google)
 
@@ -41,10 +41,10 @@ Skillforge is a meta-skill — an AI agent that builds other AI agents. Give it 
 |---:|---|
 | 1 | **Live Docs Sync** — Fetches latest rules from `code.claude.com` and `antigravity.google` |
 | 2 | **Intake** — Collects your skill name, category, ecosystem, triggers, inputs, and outputs |
-| 3 | **Discovery** — Searches 9 marketplaces in parallel to find existing similar skills |
+| 3 | **Discovery** — Searches 10 marketplaces in parallel to find existing similar skills |
 | 4 | **Front Matter** — Engineers a spec-compliant, sub-1024-char metadata block |
 | 5 | **SOP Translation** — Converts your workflow into an imperative execution pipeline |
-| 6 | **Self-Validation** — Audits its own output against 11 rules before delivery |
+| 6 | **Self-Validation** — Audits its own output against a 27-item, 3-section checklist before delivery |
 
 ## Why It Exists
 
@@ -61,25 +61,31 @@ The result: skills that are faster, more reliable, and cheaper to run.
 
 - **Dual ecosystem** — Generates skills for Claude Code or Antigravity
 - **Live doc sync** — Always builds against the latest official spec
-- **9-source discovery** — Searches Smithery, SkillsMP, SkillsLLM, SkillHub, Composio, AI Templates, GitHub Topics, and more before building from scratch
+- **10-source discovery** — Searches Smithery, SkillsMP, SkillsLLM, SkillHub, Composio, AI Templates, GitHub Topics, Awesome Claude Skills, and more before building from scratch
 - **Graceful fallback** — If docs are unreachable, surfaces cached version and asks before proceeding
-- **Self-validating** — 11-point checklist catches errors before you see the output
-- **Token-optimized** — The skill itself practices what it preaches (< 100 lines, ~1,100 tokens)
+- **Self-validating** — 27-item, 3-section checklist (Core quality, Code & scripts, Post-delivery) catches errors before you see the output
+- **Pattern library** — Teaches 8 authoring patterns: degrees of freedom, feedback loops, templates, examples, conditional workflows, checklists, verifiable intermediates, defaults over options
+- **Evaluation-ready** — Ships with 3 evaluation scenarios for testing generated skills
+- **Token-optimized** — The skill itself practices what it preaches (< 150 lines, ~1,400 tokens)
 - **Self-updating** — Checks for newer versions on GitHub before every run, with a one-line update notice
 
 ## Repository Structure
 
 ```
 skillforge/
-├── SKILL.md            ← The core SOP (v5.6.0)
+├── SKILL.md            ← The core SOP (v5.7.0)
 ├── README.md           ← You are here
 ├── CHANGELOG.md        ← Full version history
 ├── CONTRIBUTING.md     ← How to contribute
 ├── LICENSE             ← MIT
 ├── skill.json          ← Marketplace metadata
-└── examples/
-    ├── auditing-seo/SKILL.md
-    └── formatting-commits/SKILL.md
+├── examples/
+│   ├── auditing-seo/SKILL.md
+│   └── formatting-commits/SKILL.md
+└── evaluations/
+    ├── eval-simple-skill.json
+    ├── eval-skill-with-scripts.json
+    └── eval-advanced-skill.json
 ```
 
 ## Examples

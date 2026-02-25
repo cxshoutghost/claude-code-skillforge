@@ -37,5 +37,32 @@ Compose the full commit message following this structure:
 <optional footer: BREAKING CHANGE: ... or Closes #issue>
 ```
 
+**Examples:**
+
+Input: Added user authentication with JWT tokens
+Output:
+```
+feat(auth): implement JWT-based authentication
+
+Add login endpoint and token validation middleware
+```
+
+Input: Fixed bug where dates displayed incorrectly in reports
+Output:
+```
+fix(reports): correct date formatting in timezone conversion
+
+Use UTC timestamps consistently across report generation
+```
+
+Input: Updated dependencies and refactored error handling
+Output:
+```
+chore: update dependencies and refactor error handling
+
+- Upgrade lodash to 4.17.21
+- Standardize error response format across endpoints
+```
+
 ### Step 5: Deliver
 Output the final commit message in a single code block, ready to copy-paste into the terminal.
