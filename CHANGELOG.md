@@ -123,7 +123,7 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [2.0.0] — 2026-02-24
 ### Added
-- **Live Documentation Sync** — Step 1 now fetches `https://code.claude.com/docs/en/skills` and `/hooks` at runtime to prevent hallucinating deprecated syntax.
+- **Live Best Practices Sync** — Step 1 now fetches `https://code.claude.com/docs/en/skills` and `/hooks` at runtime to prevent hallucinating deprecated syntax.
 ### Changed
 - Restructured the entire SOP into a strict 5-step imperative pipeline.
 

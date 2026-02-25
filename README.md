@@ -4,7 +4,7 @@
 
 ### The skill that builds skills.
 
-Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live doc sync, 10-marketplace discovery, and self-validation — in minutes.
+Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live best practices sync, 10-marketplace discovery, and self-validation — in minutes.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-5.7.0-green.svg)](CHANGELOG.md)
@@ -39,7 +39,7 @@ Skillforge is a meta-skill — an AI agent that builds other AI agents. Give it 
 
 | Step | What happens |
 |---:|---|
-| 1 | **Live Docs Sync** — Fetches latest rules from `code.claude.com` and `antigravity.google` |
+| 1 | **Live Best Practices Sync** — Fetches latest rules from `code.claude.com` and `antigravity.google` |
 | 2 | **Intake** — Collects your skill name, category, ecosystem, triggers, inputs, and outputs |
 | 3 | **Discovery** — Searches 10 marketplaces in parallel to find existing similar skills |
 | 4 | **Front Matter** — Engineers a spec-compliant, sub-1024-char metadata block |
@@ -60,7 +60,7 @@ The result: skills that are faster, more reliable, and cheaper to run.
 ## Features
 
 - **Dual ecosystem** — Generates skills for Claude Code or Antigravity
-- **Live doc sync** — Always builds against the latest official spec
+- **Live best practices sync** — Always builds against the latest official spec
 - **10-source discovery** — Searches Smithery, SkillsMP, SkillsLLM, SkillHub, Composio, AI Templates, GitHub Topics, Awesome Claude Skills, and more before building from scratch
 - **Graceful fallback** — If docs are unreachable, surfaces cached version and asks before proceeding
 - **Self-validating** — 27-item, 3-section checklist (Core quality, Code & scripts, Post-delivery) catches errors before you see the output
