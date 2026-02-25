@@ -74,6 +74,7 @@ The result: skills that are faster, more reliable, and cheaper to run.
 ```
 skillforge/
 ├── SKILL.md            ← The core SOP (v5.7.0)
+├── VERSION             ← Current version string (used by self-update)
 ├── README.md           ← You are here
 ├── CHANGELOG.md        ← Full version history
 ├── CONTRIBUTING.md     ← How to contribute

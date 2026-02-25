@@ -31,14 +31,14 @@ If you find a bug or something that doesn't work as expected:
 - Keep the file **under 500 lines**.
 - Keep the **Front Matter under 1024 characters**.
 - All SOP steps must begin with an **imperative command verb**.
-- Do NOT remove the **Interactive Checkpoint** or the **Self-Validation Checklist** — these are core safety features.
-- Bump the version number in the Front Matter metadata (`version: "X.Y.Z"`) and add a corresponding entry to `CHANGELOG.md`.
+- Do NOT remove the **(CHECKPOINT)** gates or the **Self-Validation Checklist** — these are core safety features.
+- Bump the version in the `VERSION` file, the `version` field in `skill.json`, and the inline version in `SKILL.md` Step 0. Add a corresponding entry to `CHANGELOG.md`.
 
 ### Adding Examples
 - New examples go in the `examples/` directory.
-- Use the naming convention: `[skill-name].SKILL.md`.
+- Use a subdirectory per example: `examples/[skill-name]/SKILL.md`.
 - The example must be a real, working skill (not a placeholder).
-- Include the `generated-by: skillforge` metadata field.
+- Use only officially recognized front matter fields (no custom fields like `generated-by`).
 
 ### Updating Documentation
 - Keep `README.md` concise — the 5-section format (What/Why/When/Where/How) should be preserved.

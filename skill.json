@@ -25,7 +25,7 @@
     "priority": 7,
     "cooperationLevel": "high",
     "parallelizable": true,
-    "estimatedTokens": 1100,
+    "estimatedTokens": 1400,
     "activationThreshold": 0.7
   },
   "collaboration": {
