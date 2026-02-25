@@ -1,76 +1,108 @@
-```
-  S K I L L F O R G E
-  ──────────────────────────────────────────────────────
-  The skill that builds skills.  by @lijinnair  ·  v5.3.0  ·  MIT
-```
+<div align="center">
 
-> **The skill that builds skills.** Generate optimized Claude Code & Antigravity SKILL.md files with live doc sync, marketplace search, and self-validation — in minutes.
+# Skillforge
+
+### The skill that builds skills.
+
+Generate perfectly structured Claude Code &amp; Antigravity `SKILL.md` files — with live doc sync, 9-marketplace discovery, and self-validation — in minutes.
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-5.4.0-green.svg)](CHANGELOG.md)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-compatible-blueviolet.svg)](https://code.claude.com)
+[![Antigravity](https://img.shields.io/badge/Antigravity-compatible-orange.svg)](https://antigravity.google)
+
+**Built by [Lijin Nair](https://lijinnair.com)** · [@lijinnair](https://github.com/lijinnair)
+
+</div>
 
 ---
 
-**Built by [Lijin Nair](https://github.com/lijinnair)** · MIT License · v5.3.0
+## Quick Start
+
+```bash
+# Clone into your Antigravity skills directory
+git clone https://github.com/lijinnair/skillforge ~/.gemini/antigravity/skills/skillforge
+
+# Or into native Claude Code
+git clone https://github.com/lijinnair/skillforge ~/.claude/skills/skillforge
+```
+
+Then just say: **"I want to build a new skill"** or run **`/skillforge`**
 
 ---
 
-## 🎯 What it does
-Skillforge acts as a strict Conversational Architect that takes your raw ideas or messy prompts and automatically structures them into a perfect `SKILL.md` file. It handles Front Matter engineering, trigger phrase optimization, tool assignment, subagent isolation, and scaffold generation — all in one automated pipeline.
+## What It Does
 
-## 🧠 Why it exists
-Feeding AI agents long, theoretical documents causes massive token/context bloat and leads to inconsistent results. Skillforge enforces the **"Progressive Disclosure"** strategy:
-- Small, efficient footprints in the context window
-- Deterministic logic offloaded to separate scripts
+Skillforge is a meta-skill — an AI agent that builds other AI agents. Give it a raw idea or messy workflow, and it outputs a deploy-ready `SKILL.md` file that follows every official best practice.
+
+**The pipeline:**
+
+| Step | What happens |
+|---:|---|
+| 1 | **Live Docs Sync** — Fetches latest rules from `code.claude.com` and `antigravity.google` |
+| 2 | **Intake** — Collects your skill name, category, ecosystem, triggers, inputs, and outputs |
+| 3 | **Discovery** — Searches 9 marketplaces in parallel to find existing similar skills |
+| 4 | **Front Matter** — Engineers a spec-compliant, sub-1024-char metadata block |
+| 5 | **SOP Translation** — Converts your workflow into an imperative execution pipeline |
+| 6 | **Self-Validation** — Audits its own output against 8 rules before delivery |
+
+## Why It Exists
+
+Most AI skills are written like essays. Skillforge enforces **Progressive Disclosure** — the principle that every token in the context window must earn its place:
+
+- Minimal footprint in the context window
+- Deterministic logic offloaded to `scripts/`
 - Examples and references loaded only when needed
-- Step-by-step imperative execution pipelines
+- Strict imperative pipelines, not conversational prose
 
-## 🕰️ When to use it
-Trigger Skillforge whenever you want to:
-- Turn a repeatable workflow into a one-shot command
-- Convert messy prompt instructions into a structured agent skill
-- Teach Claude or Antigravity your specific business rules or processes
+The result: skills that are faster, more reliable, and cheaper to run.
 
-**How to trigger it:**
-Simply say: *"I want to build a new skill"* or run `/skillforge`
+## Features
 
-## 📍 Where it lives
+- **Dual ecosystem** — Generates skills for Claude Code or Antigravity
+- **Live doc sync** — Always builds against the latest official spec
+- **9-source discovery** — Searches Smithery, SkillsMP, SkillsLLM, SkillHub, Composio, AI Templates, GitHub Topics, and more before building from scratch
+- **Graceful fallback** — If docs are unreachable, surfaces cached version and asks before proceeding
+- **Self-validating** — 8-point checklist catches errors before you see the output
+- **Token-optimized** — The skill itself practices what it preaches (< 100 lines, ~1,100 tokens)
 
-**This meta-skill:**
-`~/.gemini/antigravity/skills/skillforge/`
-
-**Skills it generates — your choice:**
-| Ecosystem | Path |
-|---|---|
-| Native Claude Code | `~/.claude/skills/[skill-name]/` |
-| Antigravity | `~/.gemini/antigravity/skills/[skill-name]/` |
-
-## ⚙️ How it works (The Pipeline)
-
-1. **Live Docs Sync** — Silently fetches the latest rules from `code.claude.com` and `antigravity.google`
-2. **Interactive Checkpoint** — Pauses, shows you what it found, and asks for permission to proceed. If docs are unreachable, shows the cached version & last-updated date and prompts you to continue or retry.
-3. **Intake & Category Tagging** — Asks for your skill name, category, ecosystem, triggers, inputs, outputs, and tool requirements
-4. **Front Matter Engineering** — Writes a perfectly spec-compliant, sub-1024-character Front Matter block with `user-invocable`, `disable-model-invocation`, and `context: fork` where applicable
-5. **SOP Translation** — Converts your workflow into an imperative, numbered execution pipeline
-6. **Scaffold & Self-Validation** — Outputs the `mkdir` command and `SKILL.md` code block, then runs an 8-point checklist to validate its own output before delivery
-
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 skillforge/
-├── SKILL.md          ← The core SOP (active v5.3.0)
-├── README.md         ← This file
-├── CHANGELOG.md      ← Full version history
-├── CONTRIBUTING.md   ← How to contribute
-├── LICENSE           ← MIT
+├── SKILL.md            ← The core SOP (v5.4.0)
+├── README.md           ← You are here
+├── CHANGELOG.md        ← Full version history
+├── CONTRIBUTING.md     ← How to contribute
+├── LICENSE             ← MIT
+├── skill.json          ← Marketplace metadata
 └── examples/
     ├── seo-page-auditor.SKILL.md
     └── git-commit-formatter.SKILL.md
 ```
 
-## 👤 Author
+## Examples
 
-**Lijin Nair** — AI Systems Builder & Prompt Architect
+Skillforge generates skills like these:
+
+- **[SEO Page Auditor](examples/seo-page-auditor.SKILL.md)** — Audits any URL for title tags, meta descriptions, heading structure, and content quality
+- **[Git Commit Formatter](examples/git-commit-formatter.SKILL.md)** — Generates Conventional Commits messages from staged diffs
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). All contributions welcome.
+
+## Author
+
+**[Lijin Nair](https://lijinnair.com)** — AI Systems Builder &amp; Prompt Architect
+
 - GitHub: [@lijinnair](https://github.com/lijinnair)
-- Built for the Claude Code & Antigravity ecosystem
+- Web: [lijinnair.com](https://lijinnair.com)
 
 ---
 
-*If this helped you, please ⭐ the repo — it helps others find it!*
+<div align="center">
+
+If Skillforge saved you time, **[star the repo](https://github.com/lijinnair/skillforge)** — it helps others find it.
+
+</div>

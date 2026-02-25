@@ -5,6 +5,21 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.4.0] — 2026-02-25
+### Changed
+- **Token optimization pass** — SKILL.md reduced from ~1,300 to ~1,100 tokens per invocation (~15% reduction).
+- Removed redundant Goal section (duplicated front matter description).
+- Replaced marketplace table with numbered list (saved ~80 tokens of formatting overhead).
+- Merged "Expected Output Format" into Step 6, eliminating a standalone section.
+- Removed "Reference Best Practices" section (rules already in self-validation checklist).
+- Compressed phrasing across all steps while preserving every instruction.
+### Added
+- `website` metadata field in SKILL.md front matter.
+- Enhanced README.md with badges, quick-start section, and viral-optimized layout.
+- Expanded skill.json keywords for marketplace discoverability.
+
+---
+
 ## [5.3.0] — 2026-02-25
 ### Added
 - **Execution Rules section** — New top-level rules enforcing parallel fetching, auto-read (no approval needed for non-destructive operations), and explicit checkpoint-only pauses.

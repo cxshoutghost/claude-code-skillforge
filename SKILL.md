@@ -5,119 +5,89 @@ license: MIT
 metadata:
   author: Lijin Nair
   github: https://github.com/lijinnair
-  version: "5.3.0"
+  website: https://lijinnair.com
+  version: "5.4.0"
 ---
 
-# Claude/Antigravity Skill Builder SOP
-
-## Goal
-Design and generate a highly optimized `SKILL.md` file that strictly adheres to the most up-to-date official documentation and the "Progressive Disclosure" framework. The resulting skill must prevent context bloat, utilize an imperative execution pipeline, and accurately map tools and subagents where necessary. It must be scaffolded correctly based on whether it is intended for native Claude Code or the Antigravity ecosystem.
+# Skillforge SOP
 
 ## Execution Rules
-- **Parallel execution:** Fetch all URLs and search all marketplaces in parallel (not sequentially). Use concurrent tool calls.
-- **Auto-read:** All `read_url_content`, `search_web`, and `view_content_chunk` calls are non-destructive. Execute them without waiting for user approval.
-- **Only pause for user input** at explicit checkpoints marked with **(INTERACTIVE CHECKPOINT)**.
+- Fetch all URLs and search all marketplaces **in parallel** using concurrent tool calls.
+- `read_url_content`, `search_web`, `view_content_chunk` are non-destructive — execute without user approval.
+- Only pause at steps marked **(CHECKPOINT)**.
 
-## Execution Steps
+## Step 1: Sync Live Docs (CHECKPOINT)
+Fetch live documentation before any user interaction.
 
-### Step 1: Synchronize with Live Infrastructure (INTERACTIVE CHECKPOINT)
-Before asking the user any questions about their skill, you MUST fetch the live documentation.
-1. **Fetch ALL 5 URLs in parallel** (use concurrent tool calls, do NOT fetch sequentially):
+1. **Fetch ALL 5 URLs in parallel:**
    - `https://code.claude.com/docs/en/`
    - `https://code.claude.com/docs/en/skills`
    - `https://code.claude.com/docs/en/hooks`
    - `https://antigravity.google/docs/home`
    - `https://antigravity.google/docs/skills`
-2. Read the relevant content chunks from the skills docs in parallel.
-3. **If ALL fetches succeed:** Synthesize the core best practices, then present the **Interactive Checkpoint** to the user, summarizing the rules you found. Say: *"Here are the latest best practices fetched live. Would you like to proceed?"* Do NOT continue to Step 2 until the user confirms.
-4. **If ANY fetch fails:** Do NOT silently proceed. Instead, present the **Fallback Checkpoint** to the user:
-   - State which URL(s) failed.
-   - Display your **currently embedded knowledge version** and **last-updated date** (as stored in your training data).
-   - Say: *"I was unable to fetch the latest docs. I can proceed using my built-in knowledge (Version: [X], Last Updated: [Date]). Would you like to continue with this, or would you prefer to check your connection and retry?"*
-   - **DO NOT PROCEED** until the user explicitly chooses to continue or retry.
+2. **All succeed:** Synthesize best practices, present summary. Say: *"Here are the latest best practices. Proceed?"* Wait for confirmation.
+3. **Any fail:** State which URLs failed. Display cached knowledge version and date. Say: *"I can proceed using built-in knowledge (Version: [X], Last Updated: [Date]). Continue or retry?"* Do not proceed until the user chooses.
 
-### Step 2: Intake, Ecosystem Scoping & Category Tagging
-Ask the user to describe the workflow they want to automate. Collect all of the following:
-- **Skill Name:** What should the skill be called? (use kebab-case, e.g., `my-skill-name`)
-- **Category:** What category does this skill belong to? (e.g., `dev`, `marketing`, `seo`, `document`, `data`, `ops`)
-- **Ecosystem:** Native Claude Code (`~/.claude/skills`) or Antigravity (`~/.gemini/antigravity/skills`)?
-- **Trigger:** What words or phrases should cause this skill to activate?
-- **Inputs:** What raw materials (context, files, arguments) does the agent need at runtime?
-- **Output:** What is the exact expected deliverable?
-- **External Actions:** Does it require Bash, URL fetching, file reading, or subagent isolation (`context: fork`)?
+## Step 2: Intake & Scoping
+Collect from the user:
+- **Name:** kebab-case (e.g., `my-skill-name`)
+- **Category:** `dev` | `marketing` | `seo` | `document` | `data` | `ops`
+- **Ecosystem:** Claude Code (`~/.claude/skills`) or Antigravity (`~/.gemini/antigravity/skills`)
+- **Triggers:** Activation words or phrases
+- **Inputs:** Context, files, or arguments needed at runtime
+- **Output:** Expected deliverable
+- **Tools:** Bash, URL fetch, file read, or `context: fork`?
 
-### Step 2.5: Skill Discovery Check (Don't Reinvent the Wheel)
-**Execute ALL 9 marketplace searches in parallel** using concurrent `search_web` or `read_url_content` calls. Do NOT search them one by one.
+## Step 2.5: Discovery Check
+Search **ALL 9 sources in parallel** before building from scratch:
 
-| # | Source | URL / Query |
-|---|---|---|
-| 1 | **Smithery** | `https://smithery.ai/skills?q=[skill-name]` |
-| 2 | **SkillsMP** | `https://skillsmp.com/search?q=[skill-name]` |
-| 3 | **SkillsLLM** | `https://skillsllm.com/search?q=[skill-name]` |
-| 4 | **SkillHub / skill-marketplace.com** | `https://skill-marketplace.com/search?q=[skill-name]` |
-| 5 | **Antigravity Skill Vault** | `https://github.com/search?q=[skill-name]+topic:antigravity-skill` |
-| 6 | **Awesome Skills (sickn33)** | `https://github.com/sickn33/antigravity-awesome-skills` CATALOG.md |
-| 7 | **GitHub search** | `https://github.com/search?q=[skill-name]+topic:claude-code-skill` |
-| 8 | **Composio** | `https://composio.dev/search?q=[skill-name]` |
-| 9 | **AI Templates** | `https://www.aitmpl.com/skills?q=[skill-name]` |
+1. Smithery — `https://smithery.ai/skills?q=[skill-name]`
+2. SkillsMP — `https://skillsmp.com/search?q=[skill-name]`
+3. SkillsLLM — `https://skillsllm.com/search?q=[skill-name]`
+4. SkillHub — `https://skill-marketplace.com/search?q=[skill-name]`
+5. Antigravity Skill Vault — `https://github.com/search?q=[skill-name]+topic:antigravity-skill`
+6. Awesome Skills — `https://github.com/sickn33/antigravity-awesome-skills` CATALOG.md
+7. GitHub Topics — `https://github.com/search?q=[skill-name]+topic:claude-code-skill`
+8. Composio — `https://composio.dev/search?q=[skill-name]`
+9. AI Templates — `https://www.aitmpl.com/skills?q=[skill-name]`
 
-**After searching:**
-- If **no similar skill found**: Proceed silently to Step 3.
-- If **a similar skill is found**: Present a **Discovery Report** to the user:
-  - List the top matches with name, source, star count (if available), and a one-line description.
-  - Say: *"I found [N] existing skill(s) similar to what you described. Would you like to: (A) Customise one of these for your needs, or (B) Build a new skill from scratch with your specific requirements?"*
-  - If the user chooses **(A)**: Fetch the existing skill, present it, and help them customise it instead of generating from Step 3.
-  - If the user chooses **(B)**: Proceed to Step 3.
-  - **DO NOT PROCEED** until the user has made a choice.
-- If **any marketplace searches fail**: Note which sources were unreachable in the Discovery Report. Base the results on whichever sources responded successfully. If ALL 9 sources fail, proceed silently to Step 3.
+**Results:**
+- **No match:** Proceed to Step 3.
+- **Match found (CHECKPOINT):** Present Discovery Report (name, source, stars, description). Ask: *(A) Customise existing, or (B) Build new?* Wait for choice.
+- **Sources failed:** Note unreachable sources in the report. Use whatever succeeded. If ALL 9 fail, proceed to Step 3.
 
-### Step 3: Front Matter Engineering
-Design the Front Matter (must be `< 1024 characters`) based on the documentation rules synced in Step 1.
-- **Description:** Must start with a **third-person** action verb (e.g., "Analyzes...", "Generates...").
-- **Triggers:** Ensure the description contains 3-5 explicit trigger phrases (e.g., "Use when the user mentions X or Y.").
-- **Category metadata:** Include the category from Step 2 as a metadata field (`category: [value]`).
-- **Invocation Control:**
-  - If the skill executes destructive or automated actions: add `disable-model-invocation: true`.
-  - If the skill should only run when explicitly invoked by the user: add `user-invocable: true`.
-  - If the skill should run automatically when triggered: omit `user-invocable` (defaults to auto-discover).
-- **Advanced Context:** Implement `context: fork` and `allowed-tools` only if required by the workflow from Step 2.
+## Step 3: Front Matter Engineering
+Design front matter (`< 1024 chars`) per the docs synced in Step 1:
+- **Description:** Start with 3rd-person verb ("Analyzes...", "Generates..."). Include 3–5 trigger phrases.
+- **Category:** Add `category: [value]` metadata field.
+- **Invocation:** `disable-model-invocation: true` for destructive actions. `user-invocable: true` for explicit-only. Omit both for auto-discover.
+- **Advanced:** Add `context: fork` and `allowed-tools` only if required.
 
-### Step 4: SOP Translation (The Pipeline)
-Translate the user's workflow description into a strict, imperative Standard Operating Procedure.
-- Break the workflow into numbered `Execution Steps`.
-- Each step must start with a direct command verb (e.g., "Extract...", "Analyze...", "Compile...").
-- If the workflow requires dynamic context at runtime, use the substitution pattern (e.g., injecting PR diffs with `!\`gh pr diff\``). Reference `$ARGUMENTS` exactly as taught in the live docs.
+## Step 4: SOP Translation
+Convert the workflow into numbered imperative steps.
+- Each step starts with a command verb ("Extract...", "Analyze...", "Compile...").
+- Use `$ARGUMENTS` and backtick substitution (e.g., `!\`gh pr diff\``) for runtime context.
+- **Progressive Disclosure:** Do not embed data only needed for one path — link to it or load it conditionally.
 
-### Step 5: Separation of Concerns & Scaffold Generation
-Determine if deterministic logic should go into a `scripts/` directory. Then, output the exact terminal command based on their ecosystem choice from Step 2:
-- Native Claude: `mkdir -p ~/.claude/skills/[skill-name]`
+## Step 5: Scaffold Generation
+Output the `mkdir` command for the chosen ecosystem:
+- Claude: `mkdir -p ~/.claude/skills/[skill-name]`
 - Antigravity: `mkdir -p ~/.gemini/antigravity/skills/[skill-name]`
 
-Follow this with the raw `SKILL.md` Markdown block so the user can instantly deploy it.
+Offload deterministic logic to `scripts/` if applicable. Follow with the complete `SKILL.md` code block.
 
-### Step 6: Self-Validation Checklist (MANDATORY BEFORE DELIVERY)
-Before delivering the final output to the user, run through this checklist internally and confirm every item passes:
-- [ ] Front Matter is under 1024 characters
-- [ ] `SKILL.md` body is under 500 lines
-- [ ] Description starts with a 3rd-person action verb
-- [ ] Description contains at least 3 explicit trigger phrases
-- [ ] `category` metadata field is present
-- [ ] `user-invocable` or `disable-model-invocation` is set correctly for the use case
-- [ ] All SOP steps begin with an imperative command verb
-- [ ] The correct `mkdir` path is included for the chosen ecosystem
-- [ ] If any item FAILS, fix it before delivering the output.
+## Step 6: Validate & Deliver
+Run this checklist internally — fix any failures before delivering output.
 
-## Expected Output Format
-Deliver a structured Markdown document containing:
-1. Confirmation of live sync status (success or fallback version used).
-2. The Self-Validation Checklist results (all green).
-3. The exact terminal `mkdir` command for the chosen ecosystem.
-4. A fully formatted code block containing the exact contents of the `SKILL.md` file.
+- [ ] Front matter < 1024 characters
+- [ ] Body < 500 lines
+- [ ] Description starts with 3rd-person verb
+- [ ] Description has 3+ trigger phrases
+- [ ] `category` metadata present
+- [ ] Invocation flags set correctly
+- [ ] All steps begin with imperative verb
+- [ ] Correct `mkdir` path for chosen ecosystem
 
-## Reference Best Practices
-- **Progressive Disclosure:** Do not load data into the `SKILL.md` that is only needed for 1 specific path. Link to it instead.
-- **Volume:** Keep `SKILL.md` under 500 lines.
-- **See `examples/`:** Consult the `examples/` directory in this skill folder for reference outputs.
+**Deliver:** Sync status → checklist results → `mkdir` command → full `SKILL.md` code block.
 
----
-*Built by [Lijin Nair](https://github.com/lijinnair) · Licensed MIT · [skillforge on GitHub](https://github.com/lijinnair/skillforge)*
+Consult `examples/` for reference outputs.
