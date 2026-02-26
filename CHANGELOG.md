@@ -5,6 +5,20 @@ Follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ---
 
+## [5.10.0] — 2026-02-26
+### Added
+- **Sample Upgrade Report** — New example (`examples/sample-upgrade-report.md`) showing the diagnostic audit output format with Pass/Warning/Fail items and change summary.
+- **Sample Scan Report** — New example (`examples/sample-scan-report.md`) showing the health report table format across installed skills.
+- **Upgrade Mode evaluation** — New test scenario (`evaluations/eval-upgrade-mode.json`) for testing the upgrade pipeline with a poorly structured skill.
+- **Scan Mode evaluation** — New test scenario (`evaluations/eval-scan-mode.json`) for testing the scan pipeline.
+- **CONTRIBUTING.md modes section** — Documents the three modes (Build, Upgrade, Scan) and how they interact.
+
+### Changed
+- **README pipeline section** — Now shows all three mode pipelines (Build, Upgrade, Scan) instead of just Build.
+- **README examples section** — Split into Build Mode outputs and Upgrade & Scan Mode outputs.
+
+---
+
 ## [5.9.0] — 2026-02-26
 ### Added
 - **Skill Scanner (Scan Mode)** — Say "Scan my skills" and Skillforge reads all SKILL.md files in `~/.claude/skills/` and `~/.gemini/antigravity/skills/`, runs a quick audit on each, and outputs a health report table sorted by most issues first.

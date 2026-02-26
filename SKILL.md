@@ -12,7 +12,7 @@ argument-hint: [skill-idea or workflow]
 - Only pause at steps marked **(CHECKPOINT)**.
 
 ## Step 0: Update Check
-Fetch `https://raw.githubusercontent.com/lijinnair/skillforge/main/VERSION` silently. Compare the remote version with the local version (`5.9.0`). If remote is newer, display: *"Skillforge v[remote] is available (you have v[local]). Run `git -C [skill-path] pull` to update."* where `[skill-path]` is the detected install location. Then proceed normally — do not block execution.
+Fetch `https://raw.githubusercontent.com/lijinnair/skillforge/main/VERSION` silently. Compare the remote version with the local version (`5.10.0`). If remote is newer, display: *"Skillforge v[remote] is available (you have v[local]). Run `git -C [skill-path] pull` to update."* where `[skill-path]` is the detected install location. Then proceed normally — do not block execution.
 
 ## Step 1: Sync Live Best Practices (CHECKPOINT)
 Fetch live documentation before any user interaction.

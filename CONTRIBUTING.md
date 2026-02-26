@@ -34,6 +34,13 @@ If you find a bug or something that doesn't work as expected:
 - Do NOT remove the **(CHECKPOINT)** gates or the **Self-Validation Checklist** — these are core safety features.
 - Bump the version in the `VERSION` file, the `version` field in `skill.json`, and the inline version in `SKILL.md` Step 0. Add a corresponding entry to `CHANGELOG.md`.
 
+### Working with Modes
+Skillforge has three modes: **Build**, **Upgrade**, and **Scan**. When making changes:
+- **Build Mode** (Steps 2–6): The primary skill generation pipeline.
+- **Upgrade Mode** (Steps U1–U4): The diagnostic audit and auto-upgrade pipeline.
+- **Scan Mode** (Steps S1–S3): The installed skills health check pipeline.
+- Changes to the validation checklist in Step 6 also affect Upgrade Mode (Step U2 reuses it).
+
 ### Adding Examples
 - New examples go in the `examples/` directory.
 - Use a subdirectory per example: `examples/[skill-name]/SKILL.md`.
