@@ -33,7 +33,7 @@ Then say: **"Build a new skill"**, **"Upgrade this skill"**, or **"Scan my skill
 
 ## What It Does
 
-Skillforge is a meta-skill — an AI agent that builds and upgrades other AI agents. Give it a raw idea, messy workflow, or an existing skill to upgrade, and it outputs a deploy-ready `SKILL.md` file that follows every official best practice.
+Skillforge is a meta-skill that builds, upgrades, and scans AI skills. Give it a raw idea, messy workflow, or an existing skill to upgrade, and it outputs a deploy-ready `SKILL.md` file that follows every official best practice.
 
 **The pipeline:**
 
